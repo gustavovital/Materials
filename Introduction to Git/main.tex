@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=3cm, right=3.5cm]{geometry}
+\usepackage{listings}
+\lstset{upquote=true,
+        frame = single}
+\usepackage{hyperref}
+
+\title{Introduction to Git\footnote{https://git-scm.com/}}
+\author{Gustavo Vital\thanks{Master student at Faculty of Economics - University of Porto}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{What is Git?}
+
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Git is used by companies as Google, Microsoft, and Facebook.\\
+
+Git can be used to store contents to identify modifications in projects with the purpose to track the development of the project. It allows to update different versions of files (not only code files such as .py, .R, .c, etc) including images, comma separated values files and others.\\
+
+Sometimes some projects have fewer working on it and usually with the main code base (for this case Git allows the users to work in ``parallel'' by the use of ``\textbf{branchs}'') but even if the project just has one contributor, for good quality of code and controlling git is highly recommended.\\ 
+
+Summarising, Git can be used to archive files of a project, track changes during development of a project, undo changes or roll back previous version of a project, synchronise different computers, collaborate with other project and other. 
+
+\section{Installing Git}
+
+Before start using Git it is necessary to make it available on the computer. ThereBefore start using Git it is necessary to make it available on the computer. There are several ways to install Git, however it depends on which operational system the user are utilising. In this document we will focus basically on the three most conventional systems.\\
+
+The following information was taken directly from the official Git\footnote{https://git-scm.com/book/en/v2/Getting-Started-Installing-Git} website:
+
+
+\subsection{Installing on Linux}
+
+If you want to install the basic Git tools on Linux via a binary installer, you can generally do so through the package management tool that comes with your distribution. If you’re on Fedora (or any closely-related RPM-based distribution, such as RHEL or CentOS), you can use \texttt{dnf}:
+
+\begin{lstlisting}
+$ sudo dnf install git-all
+\end{lstlisting}
+
+
+If you’re on a Debian-based distribution, such as Ubuntu, try \texttt{apt}:
+
+\begin{lstlisting}
+$ sudo apt install git-all
+\end{lstlisting}
+
+\subsection{Installing on macOS}
+
+There are several ways to install Git on a Mac. The easiest is probably to install the Xcode Command Line Tools. On Mavericks (10.9) or above you can do this simply by trying to run \texttt{git} from the Terminal the very first time.
+
+\begin{lstlisting}
+$ git --version
+\end{lstlisting}
+If you don’t have it installed already, it will prompt you to install it.
+
+\subsection{Installing on Windows}
+
+There are also a few ways to install Git on Windows. The most official build is available for download on the Git website. Just go to \url{https://git-scm.com/download/win} and the download will start automatically. 
+
+\end{document}
