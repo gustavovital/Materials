@@ -4,6 +4,10 @@
 \usepackage{listings}
 \lstset{upquote=true,
         frame = single}
+        
+\usepackage{ebgaramond}
+\usepackage[T1]{fontenc}      
+        
 \usepackage{hyperref}
 
 \title{Introduction to Git\footnote{https://git-scm.com/}}
@@ -38,14 +42,14 @@ The following information was taken directly from the official Git\footnote{http
 If you want to install the basic Git tools on Linux via a binary installer, you can generally do so through the package management tool that comes with your distribution. If you’re on Fedora (or any closely-related RPM-based distribution, such as RHEL or CentOS), you can use \texttt{dnf}:
 
 \begin{lstlisting}
-$ sudo dnf install git-all
+~$ sudo dnf install git-all
 \end{lstlisting}
 
 
 If you’re on a Debian-based distribution, such as Ubuntu, try \texttt{apt}:
 
 \begin{lstlisting}
-$ sudo apt install git-all
+~$ sudo apt install git-all
 \end{lstlisting}
 
 \subsection{Installing on macOS}
@@ -53,12 +57,28 @@ $ sudo apt install git-all
 There are several ways to install Git on a Mac. The easiest is probably to install the Xcode Command Line Tools. On Mavericks (10.9) or above you can do this simply by trying to run \texttt{git} from the Terminal the very first time.
 
 \begin{lstlisting}
-$ git --version
+~$ git --version
 \end{lstlisting}
 If you don’t have it installed already, it will prompt you to install it.
 
 \subsection{Installing on Windows}
 
 There are also a few ways to install Git on Windows. The most official build is available for download on the Git website. Just go to \url{https://git-scm.com/download/win} and the download will start automatically. 
+
+\section{Initial Configurations}
+
+Usually, to start to use Git it is necessary to some initial configuration. Basically it is necessary to configure the \texttt{user.name} and the \texttt{user.mail}:
+
+\begin{lstlisting}
+~$ git config --global user.name "your name"
+~$ git config --global user.mail "youremail@email.domain"
+\end{lstlisting}
+
+It is also possible 
+
+\section{Local Git Repository}
+
+\section{Remote Git Repository}
+
 
 \end{document}
