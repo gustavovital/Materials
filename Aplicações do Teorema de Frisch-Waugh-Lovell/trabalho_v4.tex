@@ -1,0 +1,366 @@
+\documentclass[11pt]{beamer}
+\usetheme{Goettingen}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{graphicx} 
+ 
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{0,0,113}
+\definecolor{red}{RGB}{160,0,0}
+\definecolor{green}{RGB}{0,150,0}
+
+\setbeamerfont{bibliography item}{size=\footnotesize}
+\setbeamerfont{bibliography entry author}{size=\footnotesize}
+\setbeamerfont{bibliography entry title}{size=\footnotesize}
+\setbeamerfont{bibliography entry location}{size=\footnotesize}
+\setbeamerfont{bibliography entry note}{size=\footnotesize}
+ 
+\usepackage[procnames]{listings} 
+\lstset{language=Python, 
+        basicstyle=\ttfamily\footnotesize,
+        keywordstyle=\color{keywords},
+        commentstyle=\color{comments},
+        stringstyle=\color{red},
+        showstringspaces=false,
+        identifierstyle=\color{green},
+        procnamekeys={def,class},
+        breaklines=true,
+        literate={í}{{\'i}}1 {ĩ}{{\~i}}1 {é}{{\'e}}1 }
+
+\title{Aplicações do Teorema de Frisch-Waugh-Lovell}
+\subtitle{Apoio aos alunos de Econometria e capacitação de futuros docentes}
+\author{Gustavo de Oliveira Vital}
+\institute{Universidade Federal Fluminense - Faculdade de Economia}
+\date{18/10/2018}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+\tableofcontents
+\end{frame}
+
+\begin{frame}{Apresentação do Teorema}
+\section{Apresentação do Teorema}
+
+    Dado um modelo Linear, estimado por Mínimos Quadrados Ordinários (MQO):
+    \begin{align*}
+		\mathbf{y = X \beta + u} 
+	\end{align*}
+    Em que $y$ é a variável dependente, sendo representada por um vetor $\mathbf{n \times 1}$; X é a matriz de variáveis explicativas, tal que assumimos que essa seja $\mathbf{n \times k}$; $\mathbf{\beta}$ é o vetor de coeficientes da regressão, sendo esse um vetor $\mathbf{k \times 1}$ e $\mathbf{u}$ o vetor do termo de erro, $\mathbf{n \times 1}$.  
+    
+    Podemos transformar esse modelo tal que esse seja representado da seguinte forma:
+    \begin{align*}
+		\mathbf{y = X_{1}\beta_{1} + X_{2}\beta_{2} + u} 
+	\end{align*}
+	
+\end{frame}
+
+\begin{frame}{Apresentação do Teorema}
+\begin{block}{A proposta de FWL \'e mostrar que os estimadores de qualquer vari\'avel no modelo m\'ultiplo podem ser obtidos se ``neutralizarmos '' os efeitos das demais vari\'aveis. Dito de outra forma, se dividirmos a matriz de regressores em 2 grupos de vari\'aveis, basta eliminar os efeitos de um deles para obter o estimador do grupo de interesse do pesquisador.  }
+
+\end{block}
+\end{frame}
+
+\begin{frame}{Apresentação do Teorema}
+O teorema de FWL apresenta dois resultados:
+
+\begin{itemize}
+
+	\item As estimativas de m\'inimos quadrados das regress\~oes (1) e (2) abaixo descritas s\~ao numericamente id\^enticas;
+
+	\item Os res\'iduos de m\'inimos quadrados das regress\~oes (1) e (2) abaixo descritas s\~ao numericamente id\^enticos.
+
+\begin{align}
+	\mathbf{y = X_1 \beta_1 + X_2 \beta_2 + u} 
+\end{align} 
+\begin{align}
+	\mathbf{M_1y = M_1 X_2 \beta_2 +}  \textbf{ res\'iduos}
+\end{align} 
+em que $ \mathbf{M_1} $ \'e a matriz que projeta no $ Span^{\perp}(\mathbf{X_1}) $
+
+No modelo acima, particionamos $ \mathbf{X} = \begin{bmatrix} \mathbf{X_1} & \mathbf{X_2} \end{bmatrix} $. Além disso, $ \beta_1 $ ter\'a $k_1$ componentes e $ \beta_2 $ ter\'a $k_2$ componentes, em que $ k = k_1 + k_2 $. 
+
+\end{itemize}
+
+
+
+
+\end{frame}
+
+\begin{frame}{Apresentação do Teorema}
+\begin{block}{Nota 1}
+A matriz $ \mathbf{M_1} $ \'e dita aniquiladora de $ \mathbf{X_1} $ pois projeta ortogonalmente as colunas de $ \mathbf{X_1} $ no $ Span^{\perp}(\mathbf{X_1}) $.  Como $ \mathbf{X_1} $ \'e parte de $ \mathbf{X} $ (lembre que particionamos $ \mathbf{X} = \begin{bmatrix}  \mathbf{X_1} & \mathbf{X_2} \end{bmatrix}  $), podemos escrever que:
+
+\begin{align*}
+	\mathbf{M_1 X_1 = ( I - P_1) X_1 = X_1 - P_{X_1} X_1 = X_1 - X_1 = 0}
+\end{align*}  
+A pen\'ultima igualdade decorre do fato de $\mathbf{X_1} $ ser invariante sob a a\c{c}\~ao de $ \mathbf{P_1}$, a matriz de proje\c{c}\~ao no $Span(\mathbf{X_1})$.  
+\end{block}
+\begin{block}{Nota 2}
+	Veja que n\~ao inclu\'imos nenhuma caracteriza\c{c}\~ao mais objetiva dos res\'iduos. Isso decorre fundamentalmente de raz\~oes geom\'etricas. 
+\end{block}
+\end{frame}
+
+\begin{frame}{Prova do Teorema}
+\section{Prova do Teorema}
+Pela fórmula geral do estimador de Mínimos Quadrados Ordinários, temos que:
+\begin{align*}
+	\mathbf{\hat{\beta} = (X'X)^{-1}X'y}
+\end{align*}
+O estimador de (2) é:
+\begin{align}
+	\mathbf{(M_{2}'M_{1}X_{2})^{-1}X_{2}'M_{1}y}
+\end{align}
+Sejam $\beta_1$ e $\beta_2$ os dois vetores de coeficientes estimados de (1). Então:
+\begin{align}
+	\mathbf{y = P_{x}y + M_{x}y = X_{1}\hat{\beta_1} + X_{2}\hat{\beta_2} + M_{x}y}
+\end{align}
+Premultiplicando o lado esquerdo e o direito da expressão (4) por $\mathbf{X_{2}'M_{1}}$ nós obtemos:
+\end{frame}
+
+\begin{frame}{Prova do Teorema}
+
+\begin{align}
+	\mathbf{X_{2}'M_{1}y = X_{2}'M_{1}X_{2}\hat{\beta_{2}}}
+\end{align}   
+O primeiro termo do lado direito de (4) some, pois $\mathbf{M_{1}}$ aniquila $\mathbf{X_1}$. Podemos observar que o último termo também some:
+\begin{align*}
+	\mathbf{M_{X}M_{1}M_{2} = M_{X}X_{2} = 0}
+\end{align*}
+Agora nós podemos solucionar (5) em relação à $\mathbf{\hat{\beta_2}}$:
+\begin{align*}
+	\mathbf{\hat{\beta_2} = (X_{2}'M_{1}X_{X})^{-1}X_{2}'M_{1}y}
+\end{align*}
+Isso é: a expressão (3). Isso prova \textit{parte} do teorema.
+   
+\end{frame}
+
+\begin{frame}{Prova do Teorema}
+
+Se premultiplicarmos (4) por $\mathbf{M_1}$ ao invés de $\mathbf{X_{2}'M_1}$ nés iremos obter:
+\begin{align}
+	\mathbf{M_{1}y = M_{1}X_{2}\hat{\beta_{2}}  + M_{X}y}
+\end{align}
+Onde o último termo permanece inalterado, pois $\mathbf{M_{1}M_{X}=M_{X}}$. O regressando de (6) é o regressando da regressão (2). Como $\mathbf{\hat{\beta}}$ é uma estimação de $\mathbf{\beta}$ (1), pela primeira parte do teorema, o primeiro termo do lado direito de (6) é o vetor de valores estimados da regressão. Ainda, o segundo termo tem que ser o vetor de resíduos da regressão (1). Como $\mathbf{M_{X}y}$ é , \textit{também}, o vetor de resíduos da regressão (1), isso prova a segunda parte do teorema. 
+
+\end{frame}
+
+\begin{frame}{Um Exemplo Prático}
+\section{Um Exemplo Prático}
+
+Por fim, nesta última sessão do trabalho, o objetivo será apresentar um modelo teórico que tem como objetivo estimar a variação salarial no estado do Rio de Janeiro. A base de dados últilizada sera a PNAD (Pesquisa Nacional por Amostra em Domicílios) de pessoas (PNADPes) do ano de 2015. Ainda que esse não seja o banco de dados atual - a própria PNAD foi descontinuada e hoje é implementada a PNADC (Pesquisa Nacional por Amostra em Domicílios Contínua) - servirá como um exemplo prático da implementação deste teorema. Foi pensado um modelo que leve em consideração o Sexo da pessoa, a Idade e Anos de Estudo.  
+
+\end{frame}
+
+\begin{frame}{Um Exemplo Prático}
+O modelo assumirá a seguinte forma:
+$$ln(salario) = \beta_{0} + idade\beta_{1} + sexo\beta_{2} + educ\beta_{3} + u$$
+Ressalto, ainda, que o objetivo não é melhorar o modelo, seja em relação à acrescimos de variáveis ou mesmo em relação a correção de heterocedasticidade. O presente exemplo visa \textit{\textbf{somente}} demonstrar uma apliação referente ao teorema de FWL.\\
+Os resultados das estimações foram obtidos a partir da linguagem \textit{Python}, especificamente utilizando o modulo \textit{statsmodels}, e a leitura dos dados com o software \textit{R}.\\
+
+\end{frame}
+
+\begin{frame}[fragile]{As estimações}
+\subsection{As estimações}
+
+Dado o modelo apresentado :
+$$ln(salario) = \beta_{0} + idade\beta_{1} + sexo\beta_{2} + educ\beta_{3} + u$$
+Estimamos ele em sua forma completa após importarmos os modulos necessários:
+\begin{lstlisting}
+import pandas as pd
+import statsmodels.api as sm
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import rc
+
+pnad = pd.read_csv('dadosRJ.csv')
+pnad = pnad[['V8005', 'V9532', 'V4803', 'V0302']]
+pnad = pnad.rename({'V8005': 'idade', 'V9532': 'salmes', 'V4803': 'educ', 'V0302': 'sexo'}, axis='columns')
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{As estimações}
+Após termos importado os modulos, renomeamos as variáveis e criamos um novo \textit{dataframe} (com o mesmo nome), usando somente as variáveis necessárias.\\
+\begin{block}{De acordo com o dicionario da PNAD de 2015, salário (\textit{proxy}) é representado pelo código: 'V9532'; sexo pelo código: 'V0302'; idade pelo código: 'V8005'; e escolaridade(\textit{proxy}) pelo código: 'V4803'. Retiramos os \textit{missings} das variáveis e o valor '17' do código referente à educação, por ser não determinado. Além disso, aplicaremos o \textit{log} na variável salmes, para trabalharmos com a variação. Ainda, por sexo ser uma variável \textit{dummy}, assumiremos mulher = 1; homem = 0.}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{As estimações}
+\begin{lstlisting}
+lnsalmes = np.log(pnad['salmes'])
+pnad['lnsalmes'] = lnsalmes  # len = 25858
+pnad = pnad[(pnad.educ < 17)]  # len = 25829
+pnad = pnad.dropna()  # len = 11471
+pnad['sexo'] = pnad['sexo'].map({4: 1, 2: 0}
+\end{lstlisting}
+
+Como, por \textit{defaut} o modulo \textit{statsmodels} não inclui constante no modelo, temos que adicionar uma coluna de ``uns'':
+\begin{lstlisting}
+pnad = sm.add_constant(pnad)
+\end{lstlisting}
+Feito isso, só nos resta estimar o modelo:
+coluna de ``uns'':
+\begin{lstlisting}
+y = pnad['lnsalmes']
+X = pnad[['const', 'idade', 'sexo', 'educ']]
+
+modelo = sm.OLS(y, X)
+ajuste = modelo.fit()
+
+print(ajuste.summary().as_latex())
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}{As estimações}
+
+
+Após estimarmos o modelo, sob a forma $ln(salario) = \beta_{0} + idade\beta_{1} + sexo\beta_{2} + educ\beta_{3} + u$, obtivemos o seguinte resultado:
+\begin{center}
+\scalebox{0.6}{
+\begin{tabular}{lclc}
+\hline
+\textbf{Dep. Variable:}    &     lnsalmes     & \textbf{  R-squared:         } &     0.062   \\
+\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.061   \\
+\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     250.9   \\
+\textbf{Date:}             & Sat, 06 Oct 2018 & \textbf{  Prob (F-statistic):} & 9.75e-158   \\
+\textbf{Time:}             &     02:10:11     & \textbf{  Log-Likelihood:    } &   -28027.   \\
+\textbf{No. Observations:} &       11476      & \textbf{  AIC:               } & 5.606e+04   \\
+\textbf{Df Residuals:}     &       11472      & \textbf{  BIC:               } & 5.609e+04   \\
+\textbf{Df Model:}         &           3      & \textbf{                     } &             \\
+\end{tabular}}
+\scalebox{0.6}{
+\begin{tabular}{lcccccc}
+\hline
+               & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$>$ $|$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\textbf{const} &       4.8823  &        0.123     &    39.660  &         0.000        &        4.641    &        5.124     \\
+\textbf{idade} &       0.0251  &        0.002     &    12.476  &         0.000        &        0.021    &        0.029     \\
+\textbf{sexo}  &      -0.3950  &        0.053     &    -7.494  &         0.000        &       -0.498    &       -0.292     \\
+\textbf{educ}  &       0.1755  &        0.007     &    25.793  &         0.000        &        0.162    &        0.189     \\
+\end{tabular}}
+\scalebox{0.6}{
+\begin{tabular}{lclc}
+\hline
+\textbf{Omnibus:}       & 13384.632 & \textbf{  Durbin-Watson:     } &     1.369   \\
+\textbf{Prob(Omnibus):} &    0.000  & \textbf{  Jarque-Bera (JB):  } & 936746.793  \\
+\textbf{Skew:}          &    6.430  & \textbf{  Prob(JB):          } &      0.00   \\
+\textbf{Kurtosis:}      &   45.351  & \textbf{  Cond. No.          } &      209.   \\ \hline
+\end{tabular}}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{As estimações}
+A partir de agora, faremos o mesmo procedimento regredindo as variáveis explicativas e a variável dependente contra \textit{idade}, e extraindo de cada uma os resíduos das regressões:
+\begin{lstlisting}
+M1y = sm.OLS(pnad['lnsalmes'], pnad[['const', 'idade']]).fit().resid
+M1X2 = sm.OLS(pnad['educ'], pnad[['const', 'idade']]).fit().resid
+M1X3 = sm.OLS(pnad['sexo'], pnad[['const', 'idade']]).fit().resid
+\end{lstlisting}
+Adiciono os resultados no \textit{dataframe} pnad e faço outra estimação - dessa vez referente ao modelo com as matrizes aniquiladoras de \textit{idade}:
+\begin{lstlisting}
+pnad['M1y'] = M1y
+pnad['M1X2'] = M1X2
+pnad['M1X3'] = M1X3
+modelo2 = sm.OLS(pnad['M1y'], pnad[['const', 'M1X2', 'M1X3']])
+ajuste2 = modelo2.fit()
+
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]{As estimações}
+Aplicando o seguinte comando iremos obteremos o \textit{output}.
+\begin{lstlisting}
+print(ajuste2.summary())
+\end{lstlisting} 
+\begin{center}
+\scalebox{0.6}{
+\begin{tabular}{lclc}
+\hline
+\textbf{Dep. Variable:}    &       M1y        & \textbf{  R-squared:         } &     0.057   \\
+\textbf{Model:}            &       OLS        & \textbf{  Adj. R-squared:    } &     0.056   \\
+\textbf{Method:}           &  Least Squares   & \textbf{  F-statistic:       } &     343.8   \\
+\textbf{Date:}             & Sat, 06 Oct 2018 & \textbf{  Prob (F-statistic):} & 1.01e-145   \\
+\textbf{Time:}             &     02:00:10     & \textbf{  Log-Likelihood:    } &   -28027.   \\
+\textbf{No. Observations:} &       11476      & \textbf{  AIC:               } & 5.606e+04   \\
+\textbf{Df Residuals:}     &       11473      & \textbf{  BIC:               } & 5.608e+04   \\
+\textbf{Df Model:}         &           2      & \textbf{                     } &             \\
+\end{tabular}}
+\scalebox{0.6}{
+\begin{tabular}{lcccccc}
+\hline
+               & \textbf{coef} & \textbf{std err} & \textbf{t} & \textbf{P$>$ $|$t$|$} & \textbf{[0.025} & \textbf{0.975]}  \\
+\textbf{const} &    5.496e-15  &        0.026     &  2.12e-13  &         1.000        &       -0.051    &        0.051     \\
+\textbf{M1X2}  &       0.1755  &        0.007     &    25.794  &         0.000        &        0.162    &        0.189     \\
+\textbf{M1X3}  &      -0.3950  &        0.053     &    -7.494  &         0.000        &       -0.498    &       -0.292     \\
+\end{tabular}}
+\scalebox{0.6}{
+\begin{tabular}{lclc}
+\hline
+\textbf{Omnibus:}       & 13384.632 & \textbf{  Durbin-Watson:     } &     1.369   \\
+\textbf{Prob(Omnibus):} &    0.000  & \textbf{  Jarque-Bera (JB):  } & 936746.793  \\
+\textbf{Skew:}          &    6.430  & \textbf{  Prob(JB):          } &      0.00   \\
+\textbf{Kurtosis:}      &   45.351  & \textbf{  Cond. No.          } &      7.80   \\ \hline
+\end{tabular}}
+\end{center}
+De fato, isso nos leva a crer que $\hat{\beta_{2}}$ e $\hat{\beta_{3}}$ são iguais em âmbos os modelos.
+\end{frame}
+
+\begin{frame}[fragile]{Conclusão}
+\section{Conclusão}
+De fato, podemos concluir que os coeficientes são iguais, sendo essa uma maneira alternativa de estimação de MQO. Além disso, podemos chegar a uma outra conclusão. Os resíduos dos dois modelos são os mesmos. Como ``\textit{idade}'' está incorporada ao segundo modelo por meio da matriz aniquiladora essa variável ainda se apresenta por meio dessa matriz. Com mais algumas linhas de códigos podemos conferir ao gráfico de dispersão dos resíduos dos dois modelos. Assim, não só os coeficientes $\hat{\beta_{2}}$ e $\hat{\beta_{3}}$ são iguais, mas os resíduos $\hat{u_{1}}$ e $\hat{u_{2}}$ também - sendo o primeiro referente ao modelo com \textit{idade} e o segundo ao modelo com a matriz aniquiladora de \textit{idade}.
+\end{frame}
+
+\begin{frame}[fragile]{Visualizando o gráfico de resíduos}
+\begin{lstlisting}
+rc('font', **{'family': 'sans-serif', 'sans-serif': ['Helvetica']})
+rc('text', usetex=True)
+
+plt.subplot(2, 1, 1)
+plt.plot(ajuste.resid, 'o', alpha=0.2, color='red')
+plt.title(r"Resíduos de $y =X\beta + \mu$ ", fontsize=16)
+plt.subplot(2, 1, 2)
+plt.plot(ajuste2.resid, 'o', alpha=0.2)
+plt.title(r"Resíduos de $M_{X1}y =M_{X1}X_{2}\beta_{2}$ "r"$ + M_{X1}X_{3}\beta_{3} + M_{X1}\mu$", fontsize=16)
+plt.tight_layout()
+plt.show()
+
+\end{lstlisting}
+Que nos dá o seguinte resultado:
+\end{frame}
+
+\begin{frame}{Gráficos de Resíduos}
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{resid.png}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Outras Aplicações}
+\section{Outras Aplicações}
+
+\begin{itemize}
+	\item Sazonalidade
+	\item Tendência
+	\item Sub e superspecificação
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Bibliografia}
+\section{Bibliografia}
+\nocite{*}
+\bibliographystyle{apa}
+\bibliography{bibliografia}
+\end{frame}
+
+\end{document}
